@@ -1,0 +1,73 @@
+﻿@model AppBlog.Models.Post
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-md-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Xác nhận xóa Bài viết</h4>
+
+                        <form class="forms-sample" asp-area="Admin" asp-controller="Posts" asp-action="Delete">
+                            <input type="hidden" asp-for="CatId" />
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label asp-for="PostId">ID</label>
+                                        <br />
+                                        @Html.DisplayFor(model => model.PostId)
+                                    </div>
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                        <label asp-for="Title" class="form-control-lable">Title: <span class="tx-danger">*</span></label>
+                                        <br />
+                                        @Html.DisplayFor(model => model.Title)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+
+                                        <label class="form-control-lable">Ngày đăng <span class="tx-danger">*</span></label>
+                                        <br />
+                                        @Html.DisplayFor(model => model.CreatedDate)
+                                    </div>
+                                </div>
+                           
+                            <div class="col-md-9">
+                                <div class="form-group">
+                                    <label  class="form-control-lable">Danh mục</label>
+                                    <br />
+                                    
+                                     @Html.DisplayFor(model => model.Cat!.CatName)
+                                    
+                                   @*  <span>@ViewBag.DanhMuc</span> *@
+                                </div>
+                            </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="form-control-lable">Tác giả</label>
+                                    <br />
+                                    @Html.DisplayFor(model => model.Author)
+                                </div>
+                            </div>
+                            <div class="form-group">
+
+                                <button type="submit" class="btn btn-danger me-2">Delete</button>
+                                <button asp-action="Index" class="btn btn-light">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

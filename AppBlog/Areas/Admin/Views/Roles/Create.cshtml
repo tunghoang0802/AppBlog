@@ -1,0 +1,38 @@
+﻿@model AppBlog.Models.Role
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-md-9 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Tạo mới truy cập</h4>
+             
+                        <form class="forms-sample" asp-area="Admin" asp-controller="Roles" asp-action="Create" method="post">
+                            <div class="form-group">
+                                <label asp-for="RoleName">Role Name</label>
+                                <input type="text" class="form-control" asp-for="RoleName" placeholder="Role Name">
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="RoleDescription">Role Description</label>
+                                <input type="text" class="form-control" asp-for="RoleDescription" placeholder="Role Description">
+                            </div>
+              
+                            <button type="submit" class="btn btn-primary me-2">Submit</button>
+                            <button asp-action="Index" class="btn btn-light">Cancel</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- content-wrapper ends -->
+    <!-- partial:../../partials/_footer.html -->
+    <!-- partial -->
+</div>
+

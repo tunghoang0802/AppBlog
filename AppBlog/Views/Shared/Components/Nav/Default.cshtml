@@ -1,0 +1,12 @@
+﻿@model List<Category>
+@if (Model != null)
+{
+    <div class="widget-content">
+        <ul class="dropdown-menu">
+            @foreach (var category in Model)
+            {
+                <li><a class="dropdown-item" href="/@category.Alias">@category.CatName</a></li>
+            }
+        </ul>
+    </div>
+}

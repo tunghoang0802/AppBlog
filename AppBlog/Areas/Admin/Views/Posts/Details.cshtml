@@ -1,0 +1,214 @@
+﻿@model AppBlog.Models.Post
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+@* 
+<h1>Details</h1>
+
+<div>
+    <h4>Post</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Scontents)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Scontents)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Contents)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Contents)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Thumb)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Thumb)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Published)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Published)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Alias)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Alias)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CreatedDate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Author)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Author)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Tags)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Tags)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IsHot)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IsHot)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IsNewfeed)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IsNewfeed)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Account)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Account!.AccountId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Cat)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Cat!.CatId)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.PostId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+ *@
+
+
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-md-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Chỉnh sửa Bài viết</h4>
+
+                        <form class="forms-sample" asp-area="Admin" asp-controller="Posts" asp-action="Details">
+                          
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label asp-for="Title" class="form-control-lable">Tiêu đề</label>
+                                    <br />
+                                    @Html.DisplayFor(model => model.Title)
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label asp-for="Scontents" class="form-control-lable">Miêu tả ngắn</label>
+                                    <br />
+                                    @Html.DisplayFor(model => model.Scontents)
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label asp-for="CatId" class="form-control-lable">Danh mục : <span class="tx-danger">*(bắt buộc phải chọn)</span></label>
+                                        <br />
+                                        @Html.DisplayFor(model => model.Cat!.CatName)
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-control-lable">Ảnh đại diện: <span class="tx-danger">*</span></label>
+                                        @if (!string.IsNullOrEmpty(Model.Thumb))
+                                        {
+
+                                            <img style="object-fit: cover" width="100" height="100" src="~/images/posts/@Model.Thumb" alt="@Model.Cat!.CatName" />
+                                        }
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label asp-for="Tags" class="form-control-lable">Tags</label>
+                                   <br />
+                                    @Html.DisplayFor(model => model.Tags)
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label asp-for="Cat!.MetaKey" class="form-control-lable">Author</label>
+                                    <br />
+                                    @Html.DisplayFor(model => model.Author)
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label asp-for="Cat!.MetaDesc" class="form-control-lable">MetaDesc</label>
+                                    <br />
+                                    @Html.DisplayFor(model => model.Account!.FullName)
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label asp-for="Published" class="form-control-lable">Published: <span class="tx-danger">*</span></label>
+                                        <br />
+                                        @Html.DisplayFor(model => model.Published)
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label asp-for="IsHot" class="form-control-lable">IsHot <span class="tx-danger">*</span></label>
+                                        <br />
+                                        @Html.DisplayFor(model => model.IsHot)
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label asp-for="IsNewfeed" class="form-control-lable">IsNewfeed <span class="tx-danger">*</span></label>
+                                        <br />
+                                        @Html.DisplayFor(model => model.IsNewfeed)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label asp-for="Contents" class="form-control-lable">Contents</label>
+                                    <br />
+                                    @Html.DisplayFor(model => model.Contents)
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                               
+                                <button asp-action="Index" class="btn btn-light">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- content-wrapper ends -->
+    <!-- partial:../../partials/_footer.html -->
+    <!-- partial -->
+</div>

@@ -1,0 +1,131 @@
+﻿@model AppBlog.Models.Post
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-md-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Tạo mới Bài viết</h4>
+
+                        <form class="forms-sample" asp-area="Admin" asp-controller="Posts" asp-action="Create" method="post" enctype="multipart/form-data">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label asp-for="Title" class="form-control-lable">Tiêu đề</label>
+                                    <input type="text" class="form-control" asp-for="Title" placeholder="Title">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label asp-for="Scontents" class="form-control-lable">Miêu tả ngắn</label>
+                                    <input type="text" class="form-control" asp-for="Scontents" placeholder="SContent">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label asp-for="CatId" class="form-control-lable">Danh mục : <span class="tx-danger">*(bắt buộc phải chọn)</span></label>
+                                        <select class="form-control select2 " asp-for="CatId" asp-items="@ViewBag.DanhMuc" required>
+                                            <option label="Danh mục"></option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-control-lable">Ảnh đại diện: <span class="tx-danger">*</span></label>
+                                        <input name="fThumb" type="file" class="form-control-file" asp-for="Thumb">
+                                    </div>
+                                </div>
+                   
+                                
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label asp-for="Tags" class="form-control-lable">Tags</label>
+                                    <input type="text" class="form-control" asp-for="Tags" placeholder="Title">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label asp-for="Cat!.MetaKey" class="form-control-lable">Metakey</label>
+                                    <input type="text" class="form-control" asp-for="Cat!.MetaKey" placeholder="MetaKey">
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label asp-for="Cat!.MetaDesc" class="form-control-lable">MetaDesc</label>
+                                    <input type="text" class="form-control" asp-for="Cat!.MetaDesc" placeholder="MetaDesc">
+                                </div>
+                            </div>
+                            <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label asp-for="Published" class="form-control-lable">Published: <span class="tx-danger">*</span></label>
+                                    <input type="checkbox" asp-for="Published"><span> Active</span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label asp-for="IsHot" class="form-control-lable">IsHot <span class="tx-danger">*</span></label>
+                                    <input type="checkbox" asp-for="IsHot"><span> Active</span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label asp-for="IsNewfeed" class="form-control-lable">IsNewfeed <span class="tx-danger">*</span></label>
+                                    <input type="checkbox" asp-for="IsNewfeed"><span> Active</span>
+                                </div>
+                            </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label asp-for="Contents" class="form-control-lable">Contents</label>
+                                    <textarea class="mySummernote" asp-for="Contents"></textarea>
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary me-2">Submit</button>
+                                <button asp-action="Index" class="btn btn-light">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- content-wrapper ends -->
+    <!-- partial:../../partials/_footer.html -->
+    <!-- partial -->
+</div>
+
+
+@section Styles {
+
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+}
+
+
+@section Scripts {
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".mySummernote").summernote({
+                height: 150
+            });
+            $('.dropdown-toggle').dropdown();
+        });
+    </script>
+}

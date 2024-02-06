@@ -1,0 +1,168 @@
+﻿@model AppBlog.Models.Account
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+@* 
+<h1>Details</h1>
+
+<div>
+    <h4>Account</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FullName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FullName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Phone)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Salt)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Salt)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Active)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Active)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CreatedDate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.LastLogin)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LastLogin)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Role)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Role!.RoleId)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.AccountId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+ *@
+
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-md-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Chi Tiết tài khoản</h4>
+
+                        <form class="forms-sample" asp-area="Admin" asp-controller="Accounts" asp-action="Details">
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label asp-for="FullName">Full Name</label>
+                                        <br />
+                                        @Html.DisplayFor(model => model.FullName)
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label asp-for="Email" class="form-control-lable">Email: <span class="tx-danger">*</span></label>
+                                        <br />
+                                        @Html.DisplayFor(model => model.Email)
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+
+                                        <label asp-for="Phone" class="form-control-lable">Phone: <span class="tx-danger">*</span></label>
+                                        <br />
+                                        @Html.DisplayFor(model => model.Phone)
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label asp-for="Salt" class="form-control-lable">Salt</label>
+                                    <br />
+                                    @Html.DisplayFor(model => model.Salt)
+                                </div>
+                            </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label asp-for="Password" class="form-control-lable">Password</label>
+                                        <br />
+                                        @Html.DisplayFor(model => model.Password)
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label asp-for="CreatedDate">CreatedDate</label>
+                                        <br />
+                                        @Html.DisplayFor(model => model.CreatedDate)
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label asp-for="LastLogin" class="form-control-lable">Lastlogin: <span class="tx-danger">*</span></label>
+                                        <br />
+                                        @Html.DisplayFor(model => model.LastLogin)
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+
+                                        <label asp-for="Role" class="form-control-lable">Role: <span class="tx-danger">*</span></label>
+                                        <br />
+                                        @Html.DisplayFor(model => model.Role!.RoleName)
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+
+                                <button asp-action="Index" class="btn btn-primary me-2">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- content-wrapper ends -->
+    <!-- partial:../../partials/_footer.html -->
+    <!-- partial -->
+</div>
