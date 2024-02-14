@@ -12,10 +12,14 @@
             <div class="col-lg-8">
 
                 <div class="post featured-post-lg">
+                    @{
+                        string url = $"/{Model.Featured!.Alias}.html";
+                    }
                     <div class="details clearfix">
-                        <a href="#" class="category-badge">@Model.Featured!.Cat!.CatName</a>
+                        <a href="/@Model.Featured!.Cat!.Alias" class="category-badge">@Model.Featured!.Cat!.CatName</a>
+                        
                         <h2 class="post-title">
-                            <a href="#">@Model.Featured.Title</a>
+                            <a href="@url">@Model.Featured.Title</a>
                         </h2>
                         <ul class="meta list-inline mb-0">
                             <li class="list-inline-item">
@@ -24,7 +28,7 @@
                             <li class="list-inline-item">@Model.Featured!.CreatedDate!.Value.ToString("dd MMMM yyyy")</li>
                         </ul>
                     </div>
-                    <a href="#">
+                    <a href="@url">
                         
                         <div class="thumb rounded">
                             <div class="inner data-bg-image" data-bg-image="images/posts/@Model.Featured.Thumb">
